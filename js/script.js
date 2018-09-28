@@ -11,6 +11,7 @@ var currentLocation = {
  * #6 #Switcher function for the #channels name in the right app bar
  * @param channel Text which is set
  */
+  
 function switchChannel(channel) {
 
     //store reference of the selected channel's object in variable
@@ -34,7 +35,7 @@ function switchChannel(channel) {
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
     $('#channels li').removeClass('selected');
     $('#channels li:contains(' + channel.name + ')').addClass('selected');
-}
+};
 
 /* #6 #liking a channel on #click */
 function star() {
@@ -124,14 +125,20 @@ function listChannels() {
 }
 
 function createChannelElement(channelObject) {
-    return '<li onclick="switchChannel(channelObject.name)">' + 
-        channelObject.name + '<span class="channel-meta">' + starDisplay() + 
-        '<i class="fas fa-chevron-right"></i></span></li>';
-    function starDisplay() {
-        if (channelObject.starred === true) {
-            return '<i class="fas fa-star"></i>'
-        } else {
-            return '<i class="far fa-star"></i>'
-        }
+
+    var star = $('<i>').addClass("fa-star");
+
+    if (channelObject.starred === true) {
+        star.addClass("fas");
+    } else {
+        star.addClass("far");
     };
+
+    var chevron = $('<i>').addClass("fas fa-chevron-right");
+    var channelMeta = $('<span>').addClass('channel-meta').append(star).append(chevron);
+
+    return $('<li>').text(channelObject.name).append(channelMeta).click(function(){
+        switchChannel(channelObject);
+    })
+   
 }
