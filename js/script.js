@@ -81,9 +81,8 @@ function Message(text) {
         ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + 
         ("0" + d.getSeconds()).slice(-2); //generates string from the date object
     this.createdOn = datestring;
-    
-    var expiration = new Date(dInMilSec + 15*60*1000); //generates date of message expiration in miliseconds
-    this.expiresOn = expiration;
+    var expiration = dInMilSec + 15*60*1000; //generates date of message expiration in miliseconds
+    this.expiresOn = new Date(expiration);
 
     this.text = text;
     this.own = true;
@@ -100,9 +99,8 @@ function sendMessage() {
 
 function createMessageElement(messageObject) {
     var actualTime = new Date(Date.now()); //generates actual time
-    var expiresIn = Math.abs((messageObject.expiresOn.getHours() + 
-        messageObject.expiresOn.getMinutes()) - 
-        (actualTime.getHours() + actualTime.getMinutes())); //calculates minutes left to messege expiration
+    var difference = messageObject.expiresOn.getTime() - actualTime.getTime() //calculates milliseconds left to message expiration
+    var expiresIn = Math.round(difference/6/10000); //converts time left to expiration in millisecs to minutes
     return '<div class="message">' +
         '<h3><a href="' + messageObject.createdBy + '" target="_blank"><strong>' + 
         messageObject.createdBy +'</strong></a>' + messageObject.createdOn + 
