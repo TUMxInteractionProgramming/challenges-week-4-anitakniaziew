@@ -55,6 +55,10 @@ button, strong {
     overflow-y: auto;
 }
 
+i {
+    font-size: 24px;
+}
+
 /* APP BAR */
 
 h1 {
@@ -91,10 +95,11 @@ h1 a {
     color: white;
 }
 
-h1 #channel-star {
+h1 i {
     /* #6 #liking #filled  */
     position:absolute;
     right: 16px;
+    font-size: 24px;
 }
 
 /* CHANNELS LIST */
@@ -172,9 +177,14 @@ li.selected {
     border-bottom: 4px solid #3F51B5;
 }
 
-#tab-bar button img {
+#tab-bar button img, #tab-favorites {
     display: block;
     margin: 0 auto 4px auto;
+}
+#tab-favorites i {
+    display: block;
+    margin: 0 auto 4px auto;
+    font-size: 24px;
 }
 
 /* #5 CHAT BAR */
