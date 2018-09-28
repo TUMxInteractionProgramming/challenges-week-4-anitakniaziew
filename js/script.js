@@ -116,11 +116,11 @@ function listChannels() {
     var createKiller = createChannelElement(killerApp)
     var createFirst = createChannelElement(firstPersonOnMars)
     var createOctober = createChannelElement(octoberfest)
-    $('#channels-list').append(createYummy);
-    $('#channels-list').append(createSeven);
-    $('#channels-list').append(createKiller);
-    $('#channels-list').append(createFirst);
-    $('#channels-list').append(createOctober);
+    $('ul').append(createYummy);
+    $('ul').append(createSeven);
+    $('ul').append(createKiller);
+    $('ul').append(createFirst);
+    $('ul').append(createOctober);
 }
 
 function createChannelElement(channelObject) {
