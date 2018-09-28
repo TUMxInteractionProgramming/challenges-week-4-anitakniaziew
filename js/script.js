@@ -102,7 +102,7 @@ function createMessageElement(messageObject) {
     var difference = messageObject.expiresOn.getTime() - actualTime.getTime() //calculates milliseconds left to message expiration
     var expiresIn = Math.round(difference/6/10000); //converts time left to expiration in millisecs to minutes
     return '<div class="message">' +
-        '<h3><a href="' + messageObject.createdBy + '" target="_blank"><strong>' + 
+        '<h3><a href="https://map.what3words.com/' + messageObject.createdBy + '" target="_blank"><strong>' + 
         messageObject.createdBy +'</strong></a>' + messageObject.createdOn + 
         ' <em>' + expiresIn + ' min. left</em></h3>' + '<p>' + messageObject.text + '</p>' 
         '<button>+5 min.</button>' +
